@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:mth="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Editar Cliente</title>
+</head>
+<body>
+	<h1 th:text="${titulo}"></h1>
+	
+	<form th:action="@{/bd/editarPorCliente}" th:object="${cliente}" method="post">
+		<div>
+			<div>
+				<label for="id">ID</label><br>
+				<div>
+					<input type="number" name="id" th:field="*{id}" readonly="readonly">
+				</div>
+				<div th:if="${#fields.hasErrors('id')}" th:errors="*{id}"></div>
+				<br>
+			</div>
+			<div>
+				<label for="nombre">Nombre</label><br>
+				<div>
+					<input type="text" name="nombre" th:field="*{nombre}" readonly="readonly">
+				</div>
+				<div th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
+				<br>
+			</div>
+			<div>
+				<label for="telefono">Telefono</label><br>
+				<div>
+					<input type="number" name="telefono" th:field="*{telefono}">
+				</div>
+				<div th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}"></div>
+				<br>
+			</div>
+		 <div>
+				<label for="correo">Correo</label><br>
+				<div>
+					<input type="text" name="correo" th:field="*{correo}" >
+				</div>
+				<div th:if="${#fields.hasErrors('correo')}" th:errors="*{correo}"></div>
+				<br>
+			</div>
+			<div>
+				<label for="direccion">Direccion</label><br>
+				<div>
+					<input type="text" name="direccion" th:field="*{direccion}" >
+				</div>
+				<div th:if="${#fields.hasErrors('direccion')}" th:errors="*{direccion}"></div>
+				<br>
+			</div>
+			<div>
+				<label for="monto">Monto</label><br>
+				<div>
+					<input type="text" name="monto" th:field="*{monto}" readonly="readonly">
+				</div>
+				<div th:if="${#fields.hasErrors('monto')}" th:errors="*{monto}"></div>
+				<br>
+			</div>
+			<h3 th:text="${advertencia}"></h3>
+			<br> <input type="submit" value="Actualizar">
+			<br>
+			<br>
+		</div>
+	</form>
+	<a th:href= "@{/app/opcionesCliente/} + ${cliente.id}" ><input type="button" value="Menu Cliente"></a>
+	<a href="/app/index"><input type="button" value="Menu Principal"></a>
+</body>
+</html>

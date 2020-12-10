@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:mth="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Prestamos</title>
+</head>
+<body>
+	<h1 th:text="${titulo}"></h1>
+	
+	<form th:action="@{/bd/buscarPorFecha}"  method="post">
+		<div>
+			<div>
+				<label for="fechaInicio">Fecha de inicio </label><br>
+				<div>
+					<input type="fechaInicio" name="fechaInicio" id="fechaInicio">
+				</div>
+				<label for="fechaFin">Fecha fin</label><br>
+				<div>
+					<input type="fechaFin" name="fechaFin" id="fechaFin">
+				</div>
+			</div>
+			
+			<div >
+			<br> <input type="submit" value="Ver"> </div>
+		</div>
+	</form>
+	<br><br>
+	<a href="/bd/opcionesPrestamo"><input type="button" value="Opciones Prestamos"></a>
+	<a href="/app/admin"><input type="button" value="Menu Admin"></a>
+	<a href="/app/index"><input type="button" value="Menu Principal"></a>
+</body>
+</html>

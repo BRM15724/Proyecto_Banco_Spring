@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:mth="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Dinero</title>
+</head>
+<body>
+	<h1 th:text="${titulo}"></h1>
+
+	<table>
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Nombre</th>
+				<th>Telefono</th>
+				<th>Correo</th>
+				<th>Direccion</th>
+				<th>Monto</th>
+
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="cliente: ${clientes}">
+				<td th:text="${cliente.id}">id</td>
+				<td th:text="${cliente.nombre}">nombre</td>
+				<td th:text="${cliente.telefono}">telefono</td>
+				<td th:text="${cliente.correo}">Edad</td>
+				<td th:text="${cliente.direccion}">direccion</td>
+				<td th:text="${cliente.monto}">monto</td>
+				<td><a th:href="@{/app/editar/} + ${cliente.id}"><input type="button" value="Editar"></a></td>
+				<td><a th:href="@{/bd/eliminar/} + ${cliente.id}"><input type="button" value="Eliminar"></a></td>
+			</tr>
+
+		</tbody>
+	</table>
+	<br><br>
+	<a href="/app/admin"><input type="button" value="Menu Admin"></a>
+	<a href="/app/index"><input type="button" value="Menu Principal"></a>
+</body>
+</html>

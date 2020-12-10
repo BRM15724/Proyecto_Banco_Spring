@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:mth="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>	Dinero</title>
+</head>
+<body>
+	<h1 th:text="${titulo}" th:object="${adminBanco}"></h1>
+	  
+	  <h3 th:text="${adminBanco.dineroBanco}">Dinero total en banco</h3>
+	 
+	<a href="/app/admin"><input type="button" value="Menu Admin"></a>
+	<a href="/app/index"><input type="button" value="Menu Principal"></a>
+</body>
+</html>

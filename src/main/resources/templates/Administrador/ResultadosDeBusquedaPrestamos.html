@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:mth="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Opciones Prestamos</title>
+</head>
+<body>
+	<h1 th:text="${titulo}"></h1>
+	
+	<table>
+		<thead>
+			<tr>
+				<th>ID cliente</th>
+				<th>Monto</th>
+				<th>Fecha creacion</th>
+				<th>Fecha expiracion</th>
+				<th>Tipo prestamo</th>
+				<th>Nombre de cliente</th>
+
+			</tr>
+		</thead>
+		<tbody>
+			  <tr th:each="prestamo: ${prestamos}">
+				<td th:text="${prestamo.idCliente}"></td>
+				<td th:text="${prestamo.monto}"></td>
+				<td th:text="${prestamo.fechaCreacion}"></td>
+				<td th:text="${prestamo.fechaExpiracion}"></td>
+				<td th:text="${prestamo.tipoPrestamo}"></td>
+				<td><a th:href="@{/app/abonarPrestamo/} + ${prestamo.idCliente}"><input type="button" value="Abonar"></a></td>
+				</tr>
+				 
+		</tbody>
+	</table>
+	<br>
+	<br>
+	<br>
+	<a href="/bd/opcionesPrestamo"><input type="button" value="Opciones Prestamos"></a>
+	<a href="/app/admin"><input type="button" value="Menu Admin"></a>
+	<a href="/app/index"><input type="button" value="Menu Principal"></a>
+</body>
+</html>

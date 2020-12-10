@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:mth="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Clientes</title>
+</head>
+<body>
+	<h1 th:text="${titulo}"></h1>
+	
+	<form th:action="@{/bd/buscarNombre}" th:object="${cliente}" method="post">
+		<div>
+			<div>
+				<label for="nombre">Ingresa Nombre de cliente </label><br>
+				<div>
+					<input type="text" name="nombre" th:field="*{nombre}">
+				</div>
+				<h1 th:text=${error}></h1>
+				<br> <input type="submit" value="Ver">
+			</div>
+		</div>
+	</form>
+	<br>
+	<br>
+	
+	<a href="/bd/opcionesCliente"><input type="button" value="Opciones Clientes"></a>
+	<a href="/app/admin"><input type="button" value="Menu Admin"></a>
+	<a href="/app/index"><input type="button" value="Menu Principal"></a>
+</body>
+</html>

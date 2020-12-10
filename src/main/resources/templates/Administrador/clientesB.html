@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:mth="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Clientes</title>
+</head>
+<body>
+	<h1 th:text="${titulo}"></h1>
+	
+	<a href="/app/clientesPorID"><input type="button" value="Por ID"></a>
+	<br>
+	<br>
+	<a href="/app/clientesPorNombre"><input type="button" value="Por Nombre"></a>
+	<br>
+	<br>
+	<br>
+	
+	<a href="/bd/opcionesCliente"><input type="button" value="Opciones Clientes"></a>
+	<a href="/app/admin"><input type="button" value="Menu Admin"></a>
+	<a href="/app/index"><input type="button" value="Menu Principal"></a>
+</body>
+</html>

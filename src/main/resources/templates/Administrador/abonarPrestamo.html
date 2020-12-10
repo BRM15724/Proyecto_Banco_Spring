@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:mth="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Abonar</title>
+</head>
+<body>
+	<h1 th:text="${titulo}"></h1>
+	
+	<form th:action="@{/bd/abonarPrestamo}" th:object="${prestamo}" method="post">
+		<div>
+
+			<div>
+				<label for="idCliente">ID de cliente</label><br>
+				<div>
+					<input type="number" name="idCliente" th:field="*{idCliente}" readonly="readonly">
+				</div>
+				<div th:if="${#fields.hasErrors('idCliente')}" th:errors="*{idCliente}"></div>
+				<br>
+			</div>
+			<div>
+				<label for="monto">Cantidad a abonar</label><br>
+				<div>
+					<input type="text" name="monto" th:field="*{monto}">
+				</div>
+				<div th:if="${#fields.hasErrors('monto')}" th:errors="*{monto}"></div>
+				<br>
+			</div>
+			<h3 th:text="${advertencia}"></h3>
+			<br> <input type="submit" value="Aceptar">
+		</div>
+		</form>
+	<br><br>
+	<a href="/bd/opcionesPrestamo"><input type="button" value="Opciones Prestamos"></a>
+	<a href="/app/admin"><input type="button" value="Menu Admin"></a>
+	<a href="/app/index"><input type="button" value="Menu Principal"></a>
+</body>
+</html>

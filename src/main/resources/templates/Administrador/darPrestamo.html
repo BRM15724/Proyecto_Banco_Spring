@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:mth="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Dar prestamo</title>
+</head>
+<body>
+	<h1 th:text="${titulo}"></h1>
+
+	<form th:action="@{/bd/agregarPrestamo}" th:object="${prestamo}" method="post">
+		<div>
+
+			<div>
+				<label for="idCliente">ID de cliente</label><br>
+				<div>
+					<input type="number" name="idCliente" th:field="*{idCliente}">
+				</div>
+				<div th:if="${#fields.hasErrors('idCliente')}" th:errors="*{idCliente}"></div>
+				<br>
+			</div>
+			<div>
+				<label for="monto">Monto</label><br>
+				<div>
+					<input type="text" name="monto" th:field="*{monto}">
+				</div>
+				<div th:if="${#fields.hasErrors('monto')}" th:errors="*{monto}"></div>
+				<br>
+			</div>
+			<div>
+				<label for="fechaCreacion">Fecha de creacion</label><br>
+				<div>
+					<input type="text" name="fechaCreacion" th:field="*{fechaCreacion}">
+				</div>
+				<div th:if="${#fields.hasErrors('fechaCreacion')}" th:errors="*{fechaCreacion}"></div>
+				<br>
+			</div>
+			<div>
+				<label for="fechaExpiracion">Fecha de expiracion</label><br>
+				<div>
+					<input type="text" name="fechaExpiracion" th:field="*{fechaExpiracion}">
+				</div>
+				<div th:if="${#fields.hasErrors('fechaExpiracion')}" th:errors="*{fechaExpiracion}"></div>
+				<br>
+			</div>
+			<div>
+				<label for="tipoPrestamo">Tipo de prestamo</label><br>
+				<div>
+					<input type="number" name="tipoPrestamo" th:field="*{tipoPrestamo}">
+				</div>
+				<div th:if="${#fields.hasErrors('tipoPrestamo')}" th:errors="*{tipoPrestamo}"></div>
+				<h3>tipo 1: 1 a 12 meses(5% interes) <br> tipo 2: 2 a 6 meses(10% interes)<br> tipo 3: 6 meses en adelante(30% interes)</h3>
+				<br>
+			</div>
+			<h3 th:text="${advertencia}"></h3>
+			<br> <input type="submit" value="Agregar">
+		</div>
+	</form>
+	<br>
+	<a href="/bd/opcionesPrestamo"><input type="button" value="Opciones Prestamos"></a>
+	<a href="/app/admin"><input type="button" value="Menu Admin"></a>
+	<a href="/app/index"><input type="button" value="Menu Principal"></a>
+</body>
+</html>
