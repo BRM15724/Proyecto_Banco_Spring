@@ -1,20 +1,29 @@
 package com.web.app.models_entitys;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "cliente")
+@Table(name = "Cliente")
 public class Cliente {
 	@Id
-	private Integer id;
+	private Integer idCliente;
 	private String nombre;
 	private Integer telefono;
 	private String correo;
 	private String direccion;
 	private float monto;
 	
+	@OneToMany(
+			mappedBy = "cliente", cascade = {
+	        CascadeType.ALL
+	        })
+	private List<Prestamo> prestamo;
 	
 	public Integer getTelefono() {
 		return telefono;
@@ -22,11 +31,11 @@ public class Cliente {
 	public void setTelefono(Integer telefono) {
 		this.telefono = telefono;
 	}
-	public Integer getId() {
-		return id;
+	public Integer getIdCliente() {
+		return idCliente;
 	}
-	public void setId(Integer id) {
-		this.id = id;
+	public void setIdCliente(Integer idCliente) {
+		this.idCliente = idCliente;
 	}
 	public String getNombre() {
 		return nombre;
@@ -51,6 +60,12 @@ public class Cliente {
 	}
 	public void setMonto(float monto) {
 		this.monto = monto;
+	}
+	public List<Prestamo> getPrestamo() {
+		return prestamo;
+	}
+	public void setPrestamo(List<Prestamo> prestamo) {
+		this.prestamo = prestamo;
 	}
 
 	

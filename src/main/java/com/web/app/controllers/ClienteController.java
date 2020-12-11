@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.web.app.models_entitys.Cliente;
+import com.web.app.models_entitys.Prestamo;
 import com.web.app.services.IClienteService;
+import com.web.app.services.IPrestamoService;
 
 @Controller
 @RequestMapping(path = "/app")
@@ -16,6 +18,9 @@ public class ClienteController {
 	
 	@Autowired
 	private IClienteService clienteS;
+	@Autowired
+	private IPrestamoService prestamoS;
+	
 	
 	@GetMapping(path = "IdCliente")
 	public String cliente(Model model) {
@@ -61,4 +66,35 @@ public class ClienteController {
 		model.addAttribute("cliente",clienteS.find(id));
 		return "ClienteF/editarCliente";
 	}
+	
+	@GetMapping(path = "verMisPrestamos/{idCliente}")
+	public String verMisPrestamos(@PathVariable Integer idCliente , Model model) {
+		model.addAttribute("titulo","Mis prestamos");
+		model.addAttribute("prestamos", prestamoS.findIdCliente(idCliente));
+		return "ClienteF/ResultadosDeBusquedaPrestamos";
+	}
+	
+	@GetMapping(path = "SolicitaP/{idCliente}")
+	public String SolicitaP(@PathVariable Integer idCliente , Model model) {
+		model.addAttribute("titulo","Dar Prestamo");
+		model.addAttribute("idFijoC",idCliente);
+		model.addAttribute("idFijoP",prestamoS.getIdNewPrestamoId());
+		model.addAttribute("prestamo",new Prestamo());
+		return "ClienteF/solicitaPrestamo"; 
+	}
+	
+	@GetMapping(path = "abonarPrestamoC/{idPrestamo}")
+	public String abonarPrestamoC(@PathVariable Integer idPrestamo , Model model) {
+		model.addAttribute("titulo","Abonar a mi prestamo");
+		model.addAttribute("prestamo",prestamoS.find(idPrestamo));
+		return "ClienteF/abonarPrestamoC"; 
+	}
+	
+	@GetMapping(path = "retirarMonto/{idCliente}")
+	public String retirarMonto(@PathVariable Integer idCliente , Model model) {
+		model.addAttribute("titulo","Retirar de mi cuenta");
+		model.addAttribute("idCliente",idCliente);
+		return "ClienteF/retirarMonto";
+	}
+	
 }

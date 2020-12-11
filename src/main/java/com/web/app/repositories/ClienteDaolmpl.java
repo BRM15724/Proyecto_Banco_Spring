@@ -9,15 +9,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.web.app.models_entitys.AdminBanco;
 import com.web.app.models_entitys.Cliente;
+import com.web.app.models_entitys.Prestamo;
 
 @Repository
 public class ClienteDaolmpl implements ClienteDAO {
 
 	
 	@Autowired
-	private EntityManager em;  
+	private EntityManager em;
 	                                 
 	
 	@Override
@@ -70,7 +70,7 @@ public class ClienteDaolmpl implements ClienteDAO {
 	@Override
 	public void update(Cliente c) {
 		
-		Cliente cambio = find(c.getId());
+		Cliente cambio = find(c.getIdCliente());
 		cambio.setNombre(c.getNombre());
 		cambio.setTelefono(c.getTelefono());
 		cambio.setCorreo(c.getCorreo());
@@ -80,9 +80,9 @@ public class ClienteDaolmpl implements ClienteDAO {
 
 	@Override
 	@Transactional
-	public void delete(Integer id) {
+	public void delete(Integer idCliente) {
 		
-		Cliente eliminar = find(id);
+		Cliente eliminar = find(idCliente);
 		em.remove(eliminar);
 		
 	}
@@ -96,6 +96,15 @@ public class ClienteDaolmpl implements ClienteDAO {
 				.setParameter("nombre", nombre)
 				.getResultList();
 		return  resultado;
+	}
+	
+	@Override
+	@Transactional
+	public void updateMontoC(Integer idCliente, float monto) {
+
+		Cliente cambio = find(idCliente);
+		cambio.setMonto(cambio.getMonto() - monto);
+
 	}
 
 }

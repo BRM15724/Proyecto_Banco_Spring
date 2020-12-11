@@ -26,6 +26,12 @@ public class PrestamoServiceImlp implements IPrestamoService {
 		
 		return prestamoDAO.findAll();
 	}
+	
+	@Override
+	public List<Prestamo> findAllJoin() {
+		
+		return prestamoDAO.findAllJoin();
+	}
 
 	@Override
 	public Prestamo find(Integer id) {
@@ -34,9 +40,9 @@ public class PrestamoServiceImlp implements IPrestamoService {
 	}
 
 	@Override
-	public void updateMonto(Integer id,float monto) {
+	public Prestamo updateMonto(Integer id,float monto) {
 		
-		prestamoDAO.updateMonto(id, monto);
+		return prestamoDAO.updateMonto(id, monto);
 	}
 
 	@Override
@@ -56,5 +62,22 @@ public class PrestamoServiceImlp implements IPrestamoService {
 		
 		return prestamoDAO.PrestamosActivos();
 	}
-
+	
+	@Override
+	public List<Prestamo> findInDates(String DateA , String DateB) {
+		
+		return prestamoDAO.findInDates(DateA , DateB);
+	}
+	
+	@Override
+	public List<Prestamo> findIdCliente(Integer idCliente) {
+	
+		return prestamoDAO.findIdCliente(idCliente);
+	}
+	
+	@Override
+	public Integer getIdNewPrestamoId() {
+	
+		return prestamoDAO.getIdNewPrestamoId();
+	}
 }

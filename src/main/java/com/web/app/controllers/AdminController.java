@@ -1,7 +1,6 @@
 package com.web.app.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -74,13 +73,14 @@ public class AdminController {
 	public String darPrestamo(Model model) {
 		model.addAttribute("titulo","Dar Prestamo");
 		model.addAttribute("prestamo",new Prestamo());
+		model.addAttribute("idFijoP",prestamoS.getIdNewPrestamoId());
 		return "Administrador/darPrestamo";
 	}
 	
-	@GetMapping(path = "abonarPrestamo/{idCliente}")
-	public String abonarPrestamo(@PathVariable Integer idCliente,Model model) {
+	@GetMapping(path = "abonarPrestamo/{idPrestamo}")
+	public String abonarPrestamo(@PathVariable Integer idPrestamo,Model model) {
 		model.addAttribute("titulo","Abonar al prestamo");
-		model.addAttribute("prestamo",prestamoS.find(idCliente));
+		model.addAttribute("prestamo",prestamoS.find(idPrestamo));
 		return "Administrador/abonarPrestamo";
 	}
 	

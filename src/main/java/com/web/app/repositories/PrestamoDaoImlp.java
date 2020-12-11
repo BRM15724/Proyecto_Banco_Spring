@@ -1,6 +1,5 @@
 package com.web.app.repositories;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -9,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.web.app.models_entitys.Cliente;
 import com.web.app.models_entitys.Prestamo;
 
 @Repository
@@ -55,6 +53,14 @@ public class PrestamoDaoImlp implements PrestamoDAO {
 		return em.createQuery("from Prestamo order by monto desc", Prestamo.class).getResultList();
 
 	}
+	
+	@Override
+	@Transactional(readOnly = true)
+	public List<Prestamo> findAllJoin() {
+
+		return em.createQuery("from Prestamo order by monto desc", Prestamo.class).getResultList();
+
+	}
 
 	@Override
 	@Transactional
@@ -65,10 +71,11 @@ public class PrestamoDaoImlp implements PrestamoDAO {
 
 	@Override
 	@Transactional
-	public void updateMonto(Integer id, float monto) {
+	public Prestamo updateMonto(Integer id, float monto) {
 
 		Prestamo cambio = find(id);
 		cambio.setMonto(cambio.getMonto() - monto);
+		return cambio;
 
 	}
 
@@ -92,5 +99,35 @@ public class PrestamoDaoImlp implements PrestamoDAO {
 				.setParameter("monto", monto).getResultList();
 
 		return resultado;
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	@Transactional
+	public List<Prestamo> findInDates(String DateA , String DateB) {
+
+		return em.createQuery("FROM Prestamo AS p WHERE p.fechaCreacion BETWEEN :stDate AND :edDate ")
+				.setParameter("stDate", DateA)
+				.setParameter("edDate", DateB).getResultList();
+
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	@Transactional
+	public List<Prestamo> findIdCliente(Integer id) {
+
+		return em.createQuery("FROM Prestamo AS p WHERE p.cliente.idCliente=:id")
+				.setParameter("id", id).getResultList();
+	}
+	
+	@Override
+	@Transactional(readOnly = true)
+	public Integer getIdNewPrestamoId() {
+
+		Prestamo p = (Prestamo)em.createQuery("from Prestamo AS p ORDER BY p.idPrestamo DESC").setMaxResults(1).getSingleResult();
+		
+		return p.getIdPrestamo()+1;
+
 	}
 }

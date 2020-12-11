@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:mth="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Menu Principal</title>
+</head>
+<style>
+input{
+	width: 100%;
+}
+
+</style>
+<body>
+	<div style="text-align: center;">
+	<h1 th:text="${titulo}"></h1>
+	</div>
+	<div style="width: 30%; margin-left: 35%;">
+		<form th:action="@{/app/access}" method="post">
+		<div>
+			<div>
+				<label for="user">Usuario</label><br>
+				<div>
+					<input type="text" name="user" >
+				</div>
+				<br>
+			</div>
+			<div>
+				<label for="pass">Pasword</label><br>
+				<div>
+					<input type="text" name="pass">
+				</div>
+				<br>
+			</div>
+			<br>
+			<input style="float: left; margin-right: 10px; width: 100px; margin-left: 25%;" type="submit" value="Aceptar">
+			<a style="float: left; width: 100px;" th:href="@{http://localhost:8080/app/index}"><input type="button" value="Regresar"></a>
+		</div>
+		</form>
+		<br>
+		<div style="margin-top: 30px; color: grey;">
+		<label> Usuario: user</label>
+		<br>
+		<label> Contraseña: pass</label>
+		</div>
+	</div>
+</body>
+</html>

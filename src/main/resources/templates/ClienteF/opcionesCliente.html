@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:mth="http://www.thymeleaf.org">
 <head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <meta charset="ISO-8859-1">
 <title>Opciones Clientes</title>
 </head>
 <body>
 	<h1 th:text="${titulo}"></h1>
-	<a href="/app/agregar"><input type="button" value="Monto"></a> 
-	<a href="/app/clientesB"><input type="button" value="Solicitar Prestamo"></a>
 	<br><br>
 	<table>
 		<thead>
@@ -18,18 +17,24 @@
 				<th>Correo</th>
 				<th>Direccion</th>
 				<th>Monto</th>
-
+				<th>Opcion</th>
+				<th>Opcion</th>
+				<th>Opcion</th>
+				<th>Opcion</th>
 			</tr>
 		</thead>
 		<tbody>
 			  <tr th:each="cliente: ${clientes}">
-				<td th:text="${cliente.id}">id</td>
+				<td th:text="${cliente.idCliente}">id</td>
 				<td th:text="${cliente.nombre}">nombre</td>
 				<td th:text="${cliente.telefono}">telefono</td>
 				<td th:text="${cliente.correo}">correo</td>
 				<td th:text="${cliente.direccion}">direccion</td>
 				<td th:text="${cliente.monto}">monto</td>
-				<td><a th:href="@{/app/editarCliente/} + ${cliente.id}" ><input type="button" value="Editar"></a></td>
+				<td><a th:href="@{/app/editarCliente/} + ${cliente.idCliente}" ><input type="button" value="Editar"></a></td>
+				<td><a th:href="@{/app/retirarMonto/} + ${cliente.idCliente}"><input type="button" value="Retirar monto"></a> </td>
+				<td><a th:href="@{/app/SolicitaP/} + ${cliente.idCliente}"><input type="button" value="Solicitar Prestamo"></a></td>
+				<td><a th:href="@{/app/verMisPrestamos/} + ${cliente.idCliente}"><input type="button" value="Mis prestamos"></a></td>
 				</tr>
 				 
 		</tbody>

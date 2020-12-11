@@ -4,9 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
-import com.web.app.models_entitys.AdminBanco;
 import com.web.app.models_entitys.Cliente;
 import com.web.app.repositories.ClienteDAO;
 @Component
@@ -36,9 +34,9 @@ public class ClienteServiceImpl implements IClienteService {
 
 	
 	@Override
-	public void delete(Integer id) {
+	public void delete(Integer idCliente) {
 		
-		clienteDAO.delete(id);
+		clienteDAO.delete(idCliente);
 		
 	}
 
@@ -59,5 +57,11 @@ public class ClienteServiceImpl implements IClienteService {
 		
 		return clienteDAO.findMayor();
 	}
-
+	
+	@Override
+	public void updateMontoC(Integer idCliente , float monto) {
+		
+		clienteDAO.updateMontoC(idCliente , monto);
+	}
+	
 }

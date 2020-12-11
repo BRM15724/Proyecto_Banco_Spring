@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:mth="http://www.thymeleaf.org">
 <head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <meta charset="ISO-8859-1">
 <title>Opciones Prestamos</title>
 </head>
@@ -13,22 +14,24 @@
 		<thead>
 			<tr>
 				<th>ID cliente</th>
+				<th>Nombre de cliente</th>
 				<th>Monto</th>
 				<th>Fecha creacion</th>
 				<th>Fecha expiracion</th>
 				<th>Tipo prestamo</th>
-				<th>Nombre de cliente</th>
+				<th>Opcion</th>
 
 			</tr>
 		</thead>
 		<tbody>
 			  <tr th:each="prestamo: ${prestamos}">
-				<td th:text="${prestamo.idCliente}"></td>
+				<td th:text="${prestamo.cliente.getIdCliente()}">Id Cliente</td>
+				<td th:text="${prestamo.cliente.getNombre()}">nombre</td>
 				<td th:text="${prestamo.monto}"></td>
 				<td th:text="${prestamo.fechaCreacion}"></td>
 				<td th:text="${prestamo.fechaExpiracion}"></td>
 				<td th:text="${prestamo.tipoPrestamo}"></td>
-				<td><a th:href="@{/app/abonarPrestamo/} + ${prestamo.idCliente}"><input type="button" value="Abonar"></a></td>
+				<td><a th:href="@{/app/abonarPrestamo/} + ${prestamo.idPrestamo}"><input type="button" value="Abonar"></a></td>
 				</tr>
 				 
 		</tbody>

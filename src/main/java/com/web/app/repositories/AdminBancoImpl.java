@@ -18,8 +18,9 @@ public class AdminBancoImpl implements AdminBancoDAO {
 	@Override
 	@Transactional
 	public AdminBanco totalBanco() {
-
-		float total = 0;
+		
+		// ESTE ES EL SALDO INICIAL DEL BANCO
+		float total = 1000000;
 		for (Cliente cliente : clienteS.findAll()) {
 			total = total + cliente.getMonto();
 		}

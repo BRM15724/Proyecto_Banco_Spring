@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:mth="http://www.thymeleaf.org">
 <head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <meta charset="ISO-8859-1">
 <title>	Dinero</title>
 </head>
@@ -8,7 +9,8 @@
 	<h1 th:text="${titulo}" th:object="${adminBanco}"></h1>
 	  
 	  <h3 th:text="${adminBanco.dineroBanco}">Dinero total en banco</h3>
-	 
+	 <label style="color: blue;">* Monto inicial de $1,000,000.00</label>
+	 <br>
 	<a href="/app/admin"><input type="button" value="Menu Admin"></a>
 	<a href="/app/index"><input type="button" value="Menu Principal"></a>
 </body>

@@ -8,7 +8,7 @@
 <body>
 	<h1 th:text="${titulo}"></h1>
 
-	<form th:action="@{/bd/agregarPrestamo}" th:object="${prestamo}" method="post">
+	<form th:action="@{/bd/solicitarPrestamo}" th:object="${prestamo}" method="post">
 		<div>
 			<div>
 				<label for="idPrestamo">ID prestamo</label><br>
@@ -21,7 +21,7 @@
 			<div>
 				<label for="idCliente">ID cliente</label><br>
 				<div>
-					<input type="number" name="idCliente" id="idCliente">
+					<input type="number" name="idCliente"   th:value="${idFijoC}" readonly="readonly" id="idCliente">
 				</div>
 				<br>
 			</div>
@@ -63,8 +63,7 @@
 		</div>
 	</form>
 	<br>
-	<a href="/bd/opcionesPrestamo"><input type="button" value="Opciones Prestamos"></a>
-	<a href="/app/admin"><input type="button" value="Menu Admin"></a>
+	<a th:href="@{http://localhost:8080/bd/buscarIdCliente?idCliente=}+${idCliente}"><input type="button" value="Menu cliente"></a>
 	<a href="/app/index"><input type="button" value="Menu Principal"></a>
 </body>
 </html>

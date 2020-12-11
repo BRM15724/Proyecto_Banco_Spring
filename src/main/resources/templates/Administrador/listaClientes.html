@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:mth="http://www.thymeleaf.org">
 <head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <meta charset="ISO-8859-1">
 <title>Opciones Clientes</title>
 </head>
@@ -24,14 +25,14 @@
 		</thead>
 		<tbody>
 			  <tr th:each="cliente: ${clientes}">
-				<td th:text="${cliente.id}">id</td>
+				<td th:text="${cliente.idCliente}">id</td>
 				<td th:text="${cliente.nombre}">nombre</td>
 				<td th:text="${cliente.telefono}">telefono</td>
 				<td th:text="${cliente.correo}">correo</td>
 				<td th:text="${cliente.direccion}">direccion</td>
 				<td th:text="${cliente.monto}">monto</td>
-				<td><a th:href="@{/app/editar/} + ${cliente.id}" ><input type="button" value="Editar"></a></td>
-				<td><a th:href="@{/bd/eliminar/} + ${cliente.id}" ><input type="button" value="Eliminar"></a></td>
+				<td><a th:href="@{/app/editar/} + ${cliente.idCliente}" ><input type="button" value="Editar"></a></td>
+				<td><a th:href="@{/bd/eliminar/} + ${cliente.idCliente}" ><input type="button" value="Eliminar"></a></td>
 				</tr>
 				 
 		</tbody>

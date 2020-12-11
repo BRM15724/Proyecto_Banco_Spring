@@ -8,7 +8,7 @@
 <body>
 	<h1 th:text="${titulo}"></h1>
 	
-	<form th:action="@{/bd/abonarPrestamo}" th:object="${prestamo}" method="post">
+	<form th:action="@{/bd/abonarPrestamoC/}+${prestamo.idPrestamo}" th:object="${prestamo}" method="post">
 		<div>
 
 			<div>
@@ -31,8 +31,6 @@
 		</div>
 		</form>
 	<br><br>
-	<a href="/bd/opcionesPrestamo"><input type="button" value="Opciones Prestamos"></a>
-	<a href="/app/admin"><input type="button" value="Menu Admin"></a>
 	<a href="/app/index"><input type="button" value="Menu Principal"></a>
 </body>
 </html>

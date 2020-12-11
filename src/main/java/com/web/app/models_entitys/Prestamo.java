@@ -1,27 +1,33 @@
 package com.web.app.models_entitys;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 
 @Entity
-@Table(name = "prestamo")
+@Table(name = "Prestamo")
 public class Prestamo {
 	
 	@Id
-	private Integer idCliente;
+	private Integer idPrestamo;
 	private float monto;
 	private String fechaCreacion;
 	private String fechaExpiracion;
 	private Integer tipoPrestamo;
 	
+	@ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "idCliente")
+	private Cliente cliente;
 	
-	public Integer getIdCliente() {
-		return idCliente;
+	public Integer getIdPrestamo() {
+		return idPrestamo;
 	}
-	public void setIdCliente(Integer idCliente) {
-		this.idCliente = idCliente;
+	public void setIdPrestamo(Integer idPrestamo) {
+		this.idPrestamo = idPrestamo;
 	}
 	public float getMonto() {
 		return monto;
@@ -46,6 +52,12 @@ public class Prestamo {
 	}
 	public void setTipoPrestamo(Integer tipoPrestamo) {
 		this.tipoPrestamo = tipoPrestamo;
+	}
+	public Cliente getCliente() {
+		return cliente;
+	}
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
 	}
 	
 	

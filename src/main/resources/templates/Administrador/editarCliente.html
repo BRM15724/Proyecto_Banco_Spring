@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:mth="http://www.thymeleaf.org">
 <head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <meta charset="ISO-8859-1">
 <title>Editar Cliente</title>
 </head>
@@ -10,11 +11,11 @@
 	<form th:action="@{/bd/editar}" th:object="${cliente}" method="post">
 		<div>
 			<div>
-				<label for="id">ID</label><br>
+				<label for="idCliente">ID</label><br>
 				<div>
-					<input type="number" name="id" th:field="*{id}" readonly="readonly">
+					<input type="number" name="idCliente" th:field="*{idCliente}" readonly="readonly">
 				</div>
-				<div th:if="${#fields.hasErrors('id')}" th:errors="*{id}"></div>
+				<div th:if="${#fields.hasErrors('idCliente')}" th:errors="*{idCliente}"></div>
 				<br>
 			</div>
 			<div>

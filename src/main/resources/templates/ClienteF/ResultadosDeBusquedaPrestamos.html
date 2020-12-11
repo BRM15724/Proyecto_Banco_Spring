@@ -31,7 +31,7 @@
 				<td th:text="${prestamo.tipoPrestamo}"></td>
 				<td th:text="${prestamo.cliente.getIdCliente()}"></td>
 				<td th:text="${prestamo.cliente.getNombre()}"></td>
-				<td><a th:href="@{/app/abonarPrestamo/} + ${prestamo.idPrestamo}"><input type="button" value="Abonar"></a></td>
+				<td><a th:href="@{/app/abonarPrestamoC/} + ${prestamo.idPrestamo}"><input type="button" value="Abonar"></a></td>
 				</tr>
 				 
 		</tbody>
@@ -39,8 +39,7 @@
 	<br>
 	<br>
 	<br>
-	<a href="/bd/opcionesPrestamo"><input type="button" value="Opciones Prestamos"></a>
-	<a href="/app/admin"><input type="button" value="Menu Admin"></a>
+	<a th:href="@{http://localhost:8080/bd/buscarIdCliente?idCliente=}+${idCliente}"><input type="button" value="Menu cliente"></a>
 	<a href="/app/index"><input type="button" value="Menu Principal"></a>
 </body>
 </html>
